@@ -1,0 +1,617 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Simple Transactional Email</title>
+    <style>
+      /* -------------------------------------
+          GLOBAL RESETS
+      ------------------------------------- */
+      img {
+        border: none;
+        -ms-interpolation-mode: bicubic;
+        max-width: 100%; }
+
+      body {
+        background-color: #1F334C;
+        font-family: sans-serif;
+        -webkit-font-smoothing: antialiased;
+        font-size: 12px;
+        line-height: 2;
+        margin: 0;
+        padding: 0;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%; }
+
+
+      table {
+
+        border-collapse: separate;
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+        width: 100%; }
+        table td {
+          font-family: sans-serif;
+          font-size: 14px;
+          vertical-align: top; }
+
+
+      /* -------------------------------------
+          BODY & CONTAINER
+      ------------------------------------- */
+
+      .body {
+        background-color: #1F334C;
+        width: 100%; }
+
+      /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+      .container {
+        display: block;
+        margin: 0 auto !important;
+        /* makes it centered */
+        max-width: 580px;
+        padding: 10px;
+        width: 580px;
+        background-color: #F2F7FA;
+       }
+
+       .footerContainer{
+         display: block;
+         margin: 0 auto !important;
+         /* makes it centered */
+         max-width: 580px;
+         padding: 10px;
+         width: 580px;
+
+       }
+
+      /* This should also be a block element, so that it will fill 100% of the .container */
+      .content {
+        box-sizing: border-box;
+        display: block;
+        Margin: 0 auto;
+        max-width: 580px;
+        padding: 10px; }
+
+      /* -------------------------------------
+          HEADER, FOOTER, MAIN
+      ------------------------------------- */
+      .main {
+        background: #f6f6f6;
+        border-radius: 3px;
+        width: 100%; }
+
+      .wrapper {
+        box-sizing: border-box;
+        /* padding: 20px; */
+
+
+       }
+
+
+      .content-block {
+        padding-bottom: 10px;
+        padding-top: 10px;
+      }
+
+      .footer {
+        clear: both;
+        Margin-top: 10px;
+        text-align: center;
+        width: 100%; }
+        .footer td,
+        .footer p,
+        .footer span,
+        .footer a {
+          color: #999999;
+              padding-top: 8px;
+          font-size: 10px;
+          text-align: center; }
+
+          .logo{
+
+            display: block;
+            width: 150px !important;
+            max-width: 100% !important;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            /* border: 1px solid; */
+            border-top: none;
+            padding: 30px;
+            padding-top: 0;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom: 1px solid;
+            border-right: 1px solid;
+            border-left: 1px solid;
+            background-color: #ffffff!important;
+          }
+
+      /* -------------------------------------
+          TYPOGRAPHY
+      ------------------------------------- */
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: #000000;
+        font-family: sans-serif;
+        font-weight: 400;
+        line-height: 1.4;
+        margin: 0;
+         }
+
+      h1 {
+        font-size: 35px;
+        font-weight: 600;
+        text-align: center;
+        text-transform: capitalize; }
+
+      p,
+      ul,
+      ol {
+        font-family: sans-serif;
+        font-size: 13px;
+        font-weight: normal;
+        margin: 0;
+        Margin-bottom: 15px; }
+        p li,
+        ul li,
+        ol li {
+          list-style-position: inside;
+          margin-left: 5px; }
+
+      a {
+        color: #3498db;
+        text-decoration: underline; }
+
+      /* -------------------------------------
+          BUTTONS
+      ------------------------------------- */
+      .btn {
+        box-sizing: border-box;
+        width: 100%; }
+        .btn > tbody > tr > td {
+          padding-bottom: 15px; }
+        .btn table {
+          width: auto; }
+        .btn table td {
+          background-color: #ffffff;
+          border-radius: 5px;
+          text-align: center; }
+        .btn a {
+          background-color: #ffffff;
+          border: solid 1px #3498db;
+          border-radius: 5px;
+          box-sizing: border-box;
+          color: #3498db;
+          cursor: pointer;
+          display: inline-block;
+          font-size: 14px;
+          font-weight: bold;
+          margin: 0;
+          padding: 12px 25px;
+          text-decoration: none;
+          text-transform: capitalize; }
+
+      .btn-primary table td {
+        background-color: #1DBB4C;
+        width:250px;
+       }
+
+      .btn-primary a {
+        background-color: #1DBB4C;
+        border-color: #1DBB4C;
+        color: #ffffff; }
+
+      /* -------------------------------------
+          OTHER STYLES THAT MIGHT BE USEFUL
+      ------------------------------------- */
+      .last {
+        margin-bottom: 0; }
+
+      .first {
+        margin-top: 0; }
+
+      .align-center {
+        text-align: center; }
+
+      .align-right {
+        text-align: right; }
+
+      .align-left {
+        text-align: left; }
+
+      .clear {
+        clear: both; }
+
+      .mt0 {
+        margin-top: 0; }
+
+      .mb0 {
+        margin-bottom: 0; }
+
+      .preheader {
+        color: transparent;
+        display: none;
+        height: 0;
+        max-height: 0;
+        max-width: 0;
+        opacity: 0;
+        overflow: hidden;
+        mso-hide: all;
+        visibility: hidden;
+        width: 0; }
+
+      .powered-by a {
+        text-decoration: none; }
+
+      hr {
+        border: 0;
+        border-bottom: 3px solid #53DEE5;
+        Margin: 0 auto;
+        width: 70px;
+      }
+
+      /* -------------------------------------
+          RESPONSIVE AND MOBILE FRIENDLY STYLES
+      ------------------------------------- */
+      @media only screen and (max-width: 620px) {
+        table[class=body] h1 {
+          font-size: 24px !important;
+          margin-bottom: 10px !important; }
+        table[class=body] p,
+        table[class=body] ul,
+        table[class=body] ol,
+        table[class=body] td,
+        table[class=body] span,
+        table[class=body] a {
+          font-size: 14px !important; }
+        table[class=body] .wrapper,
+        table[class=body] .article {
+          padding: 20px !important; }
+        table[class=body] .content {
+          padding: 0 !important; }
+        table[class=body] .container {
+          padding: 0 !important;
+          width: 100% !important; }
+        table[class=body] .main {
+          border-left-width: 0 !important;
+          border-radius: 0 !important;
+          border-right-width: 0 !important; }
+        table[class=body] .btn table {
+          width: 100% !important; }
+        table[class=body] .btn a {
+          width: 100% !important; }
+        table[class=body] .img-responsive {
+          height: auto !important;
+          max-width: 100% !important;
+          width: auto !important; }
+        .logo{
+          margin-top:0!important;
+        }
+        }
+
+      /* -------------------------------------
+          PRESERVE THESE STYLES IN THE HEAD
+      ------------------------------------- */
+      @media all {
+        .ExternalClass {
+          width: 100%; }
+        .ExternalClass,
+        .ExternalClass p,
+        .ExternalClass span,
+        .ExternalClass font,
+        .ExternalClass td,
+        .ExternalClass div {
+          line-height: 100%; }
+        .apple-link a {
+          color: inherit !important;
+          font-family: inherit !important;
+          font-size: inherit !important;
+          font-weight: inherit !important;
+          line-height: inherit !important;
+          text-decoration: none !important; }
+        .btn-primary table td:hover {
+          background-color: #1DBB4C !important; }
+        .btn-primary a:hover {
+          background-color: #1DBB4C !important;
+          border-color: #1DBB4C !important; } }
+
+.banner{
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+
+}
+
+
+    </style>
+  </head>
+  <body class="">
+    <table border="0" cellpadding="0" cellspacing="0" class="body" role="presentation">
+      <tbody><tr>
+        <td>&nbsp;</td>
+        <td class="container">
+          <img src="images/CFDG.png" alt="CFDG logo" class="logo" style="margin-top: -10px;">
+          <div class="content">
+
+            <!-- START CENTERED WHITE CONTAINER -->
+            <span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
+            <table class="main" role="presentation">
+
+              <!-- START MAIN CONTENT AREA -->
+
+
+              <!-- START Header AREA -->
+              <tbody><tr>
+                <td class="wrapper">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                    <tbody><tr>
+                        <td style="background-color: #FFFFFF;  border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px">
+                          <img alt="banner" src="images/banner.jpg" style="display: block; height: auto; width: 100% " width="284" class="banner"><table border="0" cellpadding="0" cellspacing="0" style="width: 100% !important" width="100%" role="presentation">
+                            <tbody>
+
+
+                            <tr>
+                              <td style="padding: 10px 0px 10px 0px">
+                                <h1>THE RACE TO 1 TRILLION $</h1>
+                                <hr>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="padding: 17px;">
+                                <p>Big 4 Tech companies race to reach 1 trillion dollars valuation. The reaction to the quaterly finacials from <span style="font-weight:bold;">Apple, Alphabet, Amazon(AMZN) and Facebook</span> could tip the scales in the ongoing race to become America;s first $1 trilion company.</p>
+                              </td>
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </td>
+
+                    </tr>
+                  </tbody></table>
+                </td>
+              </tr>
+              <tr><td>&nbsp;</td>
+            <!-- END Header AREA -->
+
+            </tr><tr><!--Apple div-->
+              <td class="wrapper" style="padding-top: 40px;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                    <tbody><tr>
+                      <td style="background-color: #FFFFFF;  border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px">
+                        <table border="0" cellpadding="0" cellspacing="0" style="width: 100% !important" width="100%" role="presentation">
+                          <tbody>
+
+                            <tr>
+                              <td style="padding: 10px 0px 10px 0px" align="center">
+                                <img alt="banner" src="images/Apple.jpg" style="margin-top: -42px;">
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td style="padding: 17px;">
+                                <p><span style="font-weight: 800;">Apple (AAPL)</span>, currently sporting a market valuation of $870 billion, is expected to reveal a stunning 19.6 billion quaterly profit when it reports results on february 1st.*</p>
+                              </td>
+                            </tr>
+
+                            <tr>
+
+                              </tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" role="presentation">
+                                <tbody>
+                                  <tr>
+                                    <td align="center">
+                                      <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                        <tbody>
+                                          <tr>
+                                            <td> <a href="#" target="_blank">TRADE NOW</a> </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+                                    <td align="center" style="padding-bottom: 0;">
+                                      <p style="color:#BDBEC3;font-size: 10px;">CFD TRADING IS RISKY.</p>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td></tr>
+
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr><!--Google div-->
+                    <td class="wrapper" style="padding-top: 40px;">
+                      <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                          <tbody><tr>
+                            <td style="background-color: #FFFFFF;  border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px">
+                              <table border="0" cellpadding="0" cellspacing="0" style="width: 100% !important" width="100%" role="presentation">
+                                <tbody>
+
+                                  <tr>
+                                    <td style="padding: 10px 0px 10px 0px" align="center">
+                                      <img alt="banner" src="images/google.jpg" style="margin-top: -47px;">
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+                                    <td style="padding: 17px;">
+                                      <p><span style="font-weight: 800;">Google's</span> owner, Alphabet is much closer to $trillion than Amazon.* Shares of Alphabet have soared 12% this year, lifting it's market value to $818 billion.</p>
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+
+                                    </tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" role="presentation">
+                                      <tbody>
+                                        <tr>
+                                          <td align="center">
+                                            <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                              <tbody>
+                                                <tr>
+                                                  <td> <a href="#" target="_blank">TRADE NOW</a> </td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                          </td>
+                                        </tr>
+
+                                        <tr>
+                                          <td align="center" style="padding-bottom: 0;">
+                                            <p style="color:#BDBEC3;font-size: 10px;">CFD TRADING IS RISKY.</p>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </td></tr>
+
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr><!--Amazon div-->
+                          <td class="wrapper" style="padding-top: 40px;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                <tbody><tr>
+                                  <td style="background-color: #FFFFFF;  border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px">
+                                    <table border="0" cellpadding="0" cellspacing="0" style="width: 100% !important" width="100%" role="presentation">
+                                      <tbody>
+
+                                        <tr>
+                                          <td style="padding: 10px 0px 10px 0px" align="center">
+                                            <img alt="banner" src="images/amazon.jpg" style="margin-top: -47px;">
+                                          </td>
+                                        </tr>
+
+                                        <tr>
+                                          <td style="padding: 17px;">
+                                            <p><span style="font-weight: 800;">Amazon's</span> shares have already increased by 20% this year, after climbing 56% last year. This would lift Amazon's market value above $1trillion, compared with $674 bilion today. *</p>
+                                          </td>
+                                        </tr>
+
+                                        <tr>
+
+                                          </tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" role="presentation">
+                                            <tbody>
+                                              <tr>
+                                                <td align="center">
+                                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                                    <tbody>
+                                                      <tr>
+                                                        <td> <a href="#" target="_blank">TRADE NOW</a> </td>
+                                                      </tr>
+                                                    </tbody>
+                                                  </table>
+                                                </td>
+                                              </tr>
+
+                                              <tr>
+                                                <td align="center" style="padding-bottom: 0;">
+                                                  <p style="color:#BDBEC3;font-size: 10px;">CFD TRADING IS RISKY.</p>
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                        </td></tr>
+
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr><!--Facebook div-->
+                                <td class="wrapper" style="padding-top: 40px;">
+                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                      <tbody><tr>
+                                        <td style="background-color: #FFFFFF;  border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px">
+                                          <table border="0" cellpadding="0" cellspacing="0" style="width: 100% !important" width="100%" role="presentation">
+                                            <tbody>
+
+                                              <tr>
+                                                <td style="padding: 10px 0px 10px 0px" align="center">
+                                                  <img alt="banner" src="images/fb.jpg" style="margin-top: -47px;">
+                                                </td>
+                                              </tr>
+
+                                              <tr>
+                                                <td style="padding: 17px;">
+                                                  <p><span style="font-weight: 800;">Facebook</span> stands now at $552 bilion market cap and has a target price of 215$**. On 31st of January, the social network will be revealing it's results for its fourth quarter.</p>
+                                                </td>
+                                              </tr>
+
+                                              <tr>
+
+                                                </tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" role="presentation">
+                                                  <tbody>
+                                                    <tr>
+                                                      <td align="center">
+                                                        <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                                          <tbody>
+                                                            <tr>
+                                                              <td> <a href="#" target="_blank">TRADE NOW</a> </td>
+                                                            </tr>
+                                                          </tbody>
+                                                        </table>
+                                                      </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                      <td align="center" style="padding-bottom: 0;">
+                                                        <p style="color:#BDBEC3;font-size: 10px;">CFD TRADING IS RISKY.</p>
+                                                      </td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                              </td></tr>
+
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+
+                                    <tr>
+                                      <td>
+                                        <p style="text-align:center;padding-top:7px;color: #867f7f;">*Fool.com **Money.cnn.com</p>
+                                      </td>
+                                    </tr>
+                </tbody>
+              </table>
+              </div>
+            </td>
+            </tr>
+
+
+            <!-- END MAIN CONTENT AREA -->
+            </tbody>
+          </table>
+
+          <div class="footer footerContainer">
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td  width="50%">
+                  <a style="font-size:12px" href="#">Unsubscribe</a>
+                </td>
+                <td  width="50%">
+                  <a  style="font-size:12px" href="#">View in the Browser</a>
+                </td>
+              </tr>
+              <tr >
+                <td  colspan="2">
+                  HIGH RISK INVESTMENT WARNING: Trading Forex and CFDs is highly speculative, involves a significant risk of loss and is not suitable for all investors. Before trading, you are strongly advised to read and ensure that you understand the relevant risk disclosures and warnings here: Risk Disclosure Statement. There is a substantial risk that you may lose all of your initial investment. We advise you to consider whether trading leveraged products is appropriate for you in light of your own personal circumstances. We recommend that you ensure you fully understand all risks involved before trading. Trading through an online platform carries additional risks. Refer to our Regulation section here.
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- END CENTERED WHITE CONTAINER -->
+          </body>
+
+
+
+
+
+  </html>
