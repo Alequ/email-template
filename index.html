@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  /* -------------------------------------
+GLOBAL
+------------------------------------- */
+body {
+-webkit-font-smoothing: antialiased;
+-webkit-text-size-adjust: none;
+width: 100% !important;
+height: 100%;
+font-family: 'Raleway', sans-serif;
+}
+
+/* -------------------------------------
+ELEMENTS
+------------------------------------- */
+a {
+font-family: 'Raleway', sans-serif;
+}
+
+
+
+.last {
+margin-bottom: 0;
+}
+
+.first {
+margin-top: 0;
+}
+
+/* -------------------------------------
+BODY
+------------------------------------- */
+table.body-wrap {
+width: 100%;
+padding: 40px;
+}
+
+/* -------------------------------------
+TYPOGRAPHY
+------------------------------------- */
+h1,h2,h3 {
+font-family: 'Raleway', sans-serif;
+line-height: 1.1;
+margin-bottom: 15px;
+color: #000;
+margin: 25px 0 0px;
+line-height: 1.2;
+font-weight: 200;
+}
+
+h1 {
+font-size: 36px;
+}
+
+h2 {
+font-size: 28px;
+}
+
+h3 {
+font-size: 22px;
+}
+
+p,ul {
+margin-bottom: 10px;
+font-weight: normal;
+font-size: 14px;
+}
+
+ul li {
+margin-left: 5px;
+list-style-position: inside;
+}
+
+.text-upper {
+text-transform: uppercase;
+}
+
+.text-center {
+text-align: center;
+}
+
+
+/* main style */
+.container {
+display: block !important;
+max-width: 480px !important;
+margin: 0 auto !important; /* makes it centered */
+clear: both !important;
+border: none !important;
+background: transparent !important;
+}
+
+/* This should also be a block element, so that it will fill 100% of the .container */
+.content {
+  padding: 0px;
+      max-width: 600px;
+      margin: 0;
+      display: block;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      /* border: 3px solid #a3a9ac !important; */
+      border-top: none !important;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border: 1px solid #E7ECF0;
+      font-family: sans-serif;
+      font-size: 14px;
+      vertical-align: top;
+      border-top: none;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+}
+
+/* Let's make sure tables in the content area are 100% wide */
+.content table {
+width: 100%;
+padding: 0;
+}
+
+/* Adding other elements style */
+.mail-header-s {
+font-size: 24px;
+letter-spacing: 1px;
+font-weight: 600;
+color: #88b17d;
+}
+
+.mail-header-main {
+background-color: #7f9ead;
+text-align: center;
+color: #ffffff;
+font-size: 30px;
+letter-spacing: 2px;
+font-weight: 700;
+margin-top: 8px;
+margin-left: -3px;
+margin-right: -3px;
+padding-top: 7px;
+padding-bottom: 7px;
+}
+
+.mail-content-main {
+font-size: 24px;
+letter-spacing: 1px;
+font-weight: 600;
+color: #a3a9ac;
+margin-bottom: 0px;
+}
+
+.pad-b-50 {
+padding-bottom: 50px;
+}
+
+.top-image {
+width:64px;
+}
+
+b {
+  background-color: #fff;
+      display: block;
+      /* border: 3px solid #a3a9ac; */
+      border-bottom: 0;
+      height: 100%;
+      margin: 0;
+      padding-bottom: 27px;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border: 1px solid #E7ECF0;
+      border-bottom: none;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+
+}
+
+
+.btn {
+  box-sizing: border-box;
+  width: 100%; }
+  .btn > tbody > tr > td {
+    padding-bottom: 15px; }
+  .btn table {
+    width: auto; }
+  .btn table td {
+    background-color: #ffffff;
+    border-radius: 5px;
+    text-align: center; }
+  .btn a {
+    background-color: #ffffff;
+    border: solid 1px #3498db;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #3498db;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    padding: 12px 25px;
+    text-decoration: none;
+    text-transform: capitalize; }
+
+.btn-primary table td {
+  background-color: #1DBB4C;
+  width:250px;
+ }
+
+.btn-primary a {
+  background-color: #1DBB4C;
+  border-color: #1DBB4C;
+  color: #ffffff; }
+
+  </style>
+</head>
+<body>
+  <table class="body-wrap">
+		<tbody><tr>
+			<td></td>
+			<td class="container">
+				<table style="width: 100%;" cellspacing="0" cellpadding="0">
+					<tbody><tr>
+                        <td valign="bottom"><b style="border-top-left-radius:5px; border-right:none;border-top-right-radius: 0;">&nbsp;</b></td>
+						<td class="text-center" width="64">
+                            <img class="top-image" src="https://i.imgur.com/ZpgwuLb.jpg"></td>
+						<td valign="bottom"><b style="border-top-right-radius:5px; border-left:none border-top-left-radius: 0;">&nbsp;</b></td>
+					</tr>
+				</tbody></table>
+				<!-- content -->
+				<div class="content">
+
+
+          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse: separate;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 100%;">
+              <tbody><tr>
+                <td style="background-color: #FFFFFF;font-family: sans-serif;font-size: 14px;vertical-align: top;">
+                  <table border="0" cellpadding="0" cellspacing="0" style="width: 100% !important;border-collapse: separate;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" width="100%" role="presentation">
+                    <tbody>
+
+
+
+                      <tr>
+                        <td style="padding: 17px;font-family: sans-serif;font-size: 14px;vertical-align: top; ">
+                          <p style="font-family: sans-serif;font-size: 13px;font-weight: normal;margin: 0;margin-bottom: 15px;"><span style="font-weight: 800;">Apple (AAPL)</span>, currently sporting a market valuation of $870 billion, is expected to reveal a stunning 19.6 billion quaterly profit when it reports results on february 1st.*</p>
+                        </td>
+                      </tr>
+
+                      <tr>
+
+                        </tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" role="presentation" style="border-collapse: separate;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 100%;box-sizing: border-box;">
+                          <tbody>
+                            <tr>
+                              <td align="center" style="font-family: sans-serif;font-size: 14px;vertical-align: top;padding-bottom: 15px;">
+                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse: separate;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: auto;">
+                                  <tbody>
+                                    <tr>
+                                      <td style="font-family: sans-serif;font-size: 14px;vertical-align: top;background-color: #1DBB4C;border-radius: 5px;text-align: center;width: 250px;"> <a href="#" target="_blank" style="color: #ffffff;text-decoration: none;background-color: #1DBB4C;border: solid 1px #3498db;border-radius: 5px;box-sizing: border-box;cursor: pointer;display: inline-block;font-size: 14px;font-weight: bold;margin: 0;padding: 12px 25px;text-transform: capitalize;border-color: #1DBB4C;">TRADE NOW</a> </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td align="center" style="padding-bottom: 15px;font-family: sans-serif;font-size: 14px;vertical-align: top;">
+                                <p style="color: #BDBEC3;font-size: 10px;font-family: sans-serif;font-weight: normal;margin: 0;margin-bottom: 15px;">CFD TRADING IS RISKY.</p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td></tr>
+
+                  </tbody>
+                </table>
+
+
+
+				</div> <!-- /content -->
+
+			</td>
+			<td></td>
+		</tr>
+	</tbody>
+                            </table>
+
+</body>
+</html>
